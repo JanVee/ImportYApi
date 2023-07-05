@@ -1,0 +1,62 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.janvee.ImportYapi</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>ImportYapi</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="814107539@qq.com" url="https://github.com/JanVee">JanVee</vendor>
+
+    <change-notes>
+        <![CDATA[
+      <em>ImportYapi IntelliJ IDEA plugin</em>
+      <h4>The version 1.0</h4>
+      <h4>Publish 1.1 version，update something</h4>
+      <ol>
+        <li>update vendor url</li>
+      </ol>
+      <h4>Publish 1.2 version，update something</h4>
+      <ol>
+        <li>update plugin logo</li>
+      </ol>
+    ]]>
+    </change-notes>
+
+    <version>1.2</version>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+      a small plugin for IntelliJ IDEA uploading http api information to YApi.<br>
+      <em>less inputing</em><br>
+      <em>Avoid duplication of work,Reducing Development Pressure,improve work efficiency.Code annotations are also standardized</em>
+      <hr>
+      <br>
+      一个快速上传HTTP接口文档到YApi的IDEA插件<br>
+      <em>减少开发人员接口信息的重复录入</em><br>
+      <em>避免重复的工作，减轻开发压力，提高工作效率！</em>
+    ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <projectConfigurable
+                instance="com.janvee.importyapi.config.YApiSearchableConfigurable"/>
+        <projectService
+                serviceImplementation="com.janvee.importyapi.config.YApiProjectPersistentState"/>
+    </extensions>
+    <actions>
+        <action id="ImportYapiId" class="com.janvee.importyapi.ImportYApiAction" text="同步接口至YApi"
+                description="同步数据到YAPI">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
